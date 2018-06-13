@@ -7,14 +7,13 @@ import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class ModelItemSword implements ItemMeshDefinition {
 
 	public ModelItemSword(Item item) {
-		if(item instanceof ItemPickaxe) {
+		if(item instanceof ItemSword) {
 			ModelBakery.registerItemVariants(item, ModelInit.itemSwordResourceLocation);
 		}
 	}

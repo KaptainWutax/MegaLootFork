@@ -1,6 +1,7 @@
 package com.kaptainwutax.megaloot.init;
 
 import com.kaptainwutax.megaloot.model.ModelItemPickaxe;
+import com.kaptainwutax.megaloot.model.ModelItemSword;
 import com.kaptainwutax.megaloot.utility.Reference;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -35,6 +36,7 @@ public class ModelInit {
 	public static void registerItemModels() {
 		initialize();
 		ModelLoader.setCustomMeshDefinition(ItemInit.PICKAXE, new ModelItemPickaxe(ItemInit.PICKAXE));
+		ModelLoader.setCustomMeshDefinition(ItemInit.SWORD, new ModelItemSword(ItemInit.SWORD));
 		registerCase(ItemInit.COMMON_CASE, 0, "inventory", 0);
 		registerCase(ItemInit.RARE_CASE, 0, "inventory", 1);
 		registerCase(ItemInit.EPIC_CASE, 0, "inventory", 2);
