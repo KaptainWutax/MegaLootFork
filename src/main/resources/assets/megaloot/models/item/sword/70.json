@@ -1,5 +1,5 @@
 {
-	"parent": "megaloot:item/generated",
+	"parent": "item/generated",
 	"textures": {
 		"layer0": "megaloot:items/sword/70"
 	}

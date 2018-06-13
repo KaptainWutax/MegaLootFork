@@ -2,6 +2,7 @@ package com.kaptainwutax.megaloot.item;
 
 import com.kaptainwutax.megaloot.init.ItemInit;
 import com.kaptainwutax.megaloot.init.ModelInit;
+import com.kaptainwutax.megaloot.nbt.NBTItemPickaxe;
 import com.kaptainwutax.megaloot.utility.Reference;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,7 +42,6 @@ public class ItemCase extends Item {
     private int generateCaseTool() {
 		Random random = new Random();
 		int randomTool = random.nextInt(ItemInit.TOOLS.size());
-		System.out.println(randomTool);
 		return randomTool;
     }
 	
@@ -51,15 +51,26 @@ public class ItemCase extends Item {
 	}
 	
 	private void generatePickaxe(EntityPlayer player) {	
-		ItemStack stack = new ItemStack(ItemInit.PICKAXE);
+		ItemPickaxe pickaxe = ItemInit.PICKAXE;
+		NBTItemPickaxe nbt = new NBTItemPickaxe();
+		ItemStack stack = new ItemStack(pickaxe);
+		Random random = new Random();
+				
+		//NBT Model
+		int randomModel = random.nextInt(ModelInit.numberOfPickaxeVariants);
 		
-    	if(!stack.hasTagCompound()) {
-    		NBTTagCompound nbt = new NBTTagCompound();
-    		stack.setTagCompound(nbt);
-    		Random random = new Random();
-    		int randomModel = random.nextInt(ModelInit.numberOfPickaxeVariants);
-        	nbt.setInteger("model", randomModel);
-    	}
+		//NBT Efficiency
+		int randomEfficiency = nbt.defaultEfficiency;
+		switch(this.rarity) {
+			case 0 : randomEfficiency = random.nextInt(nbt.maxEfficiencyCommon - nbt.minEfficiencyCommon) + nbt.minEfficiencyCommon;
+				break;
+			case 1 : randomEfficiency = random.nextInt(nbt.maxEfficiencyRare - nbt.minEfficiencyRare) + nbt.minEfficiencyRare;
+				break;
+			case 2 : randomEfficiency = random.nextInt(nbt.maxEfficiencyEpic - nbt.minEfficiencyEpic) + nbt.minEfficiencyEpic;
+				break;
+		}
+		
+		NBTItemPickaxe.setNBT(stack, NBTItemPickaxe.defaultDisplayName, randomModel, this.rarity, randomEfficiency);
     	
     	player.inventory.addItemStackToInventory(stack);    	
 	}
@@ -73,6 +84,7 @@ public class ItemCase extends Item {
     		Random random = new Random();
     		int randomModel = random.nextInt(ModelInit.numberOfSwordVariants);
         	nbt.setInteger("model", randomModel);
+        	nbt.setInteger("efficiency", 4);
     	}
     	
     	player.inventory.addItemStackToInventory(stack);    	

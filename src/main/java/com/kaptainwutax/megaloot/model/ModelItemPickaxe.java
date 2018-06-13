@@ -1,6 +1,8 @@
 package com.kaptainwutax.megaloot.model;
 
+import com.kaptainwutax.megaloot.init.ItemInit;
 import com.kaptainwutax.megaloot.init.ModelInit;
+import com.kaptainwutax.megaloot.nbt.NBTItemPickaxe;
 
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
@@ -29,15 +31,7 @@ public class ModelItemPickaxe implements ItemMeshDefinition {
 	}
 	
 	private int getPickaxeModel(ItemStack stack) {
-		int model = 0;
-		if(stack.hasTagCompound()) {
-			NBTTagCompound nbt = stack.getTagCompound();
-			if(nbt.hasKey("model")) {model = nbt.getInteger("model");}
-		} else {
-			NBTTagCompound nbt = new NBTTagCompound();
-			stack.setTagCompound(nbt);
-			nbt.setInteger("model", 0);
-		}
+		int model = NBTItemPickaxe.getModelNBT(stack);
 		return model;
 	}
 
