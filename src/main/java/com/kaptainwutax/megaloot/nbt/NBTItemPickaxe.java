@@ -1,5 +1,6 @@
 package com.kaptainwutax.megaloot.nbt;
 
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
@@ -60,8 +61,20 @@ public class NBTItemPickaxe {
 	//NBT Rarity
 	public static int defaultRarity = 0;
 	
+	//NBT Durability
+	public static int defaultDurability = ToolMaterial.DIAMOND.getMaxUses();
+	
+	public static int minDurabilityCommon = 100;
+	public static int maxDurabilityCommon = 550;
+	
+	public static int minDurabilityRare = 350;
+	public static int maxDurabilityRare = 1450;
+	
+	public static int minDurabilityEpic = 850;
+	public static int maxDurabilityEpic = 2500;
+	
 	//NBT Efficiency
-	public static int defaultEfficiency = 4;
+	public static int defaultEfficiency = (int)ToolMaterial.DIAMOND.getEfficiency();
 	
 	public static int minEfficiencyCommon = 5;
 	public static int maxEfficiencyCommon = 12;
@@ -74,7 +87,7 @@ public class NBTItemPickaxe {
 
 
 	//Set NBT compound
-	public static void setNBT(ItemStack stack, String displayName, int model, int rarity, int efficiency) {
+	public static void setNBT(ItemStack stack, String displayName, int model, int rarity, int durability, int efficiency) {
 		if(stack.hasTagCompound()) {return;} 
 		else {
 			NBTTagCompound nbt = new NBTTagCompound();
@@ -82,6 +95,7 @@ public class NBTItemPickaxe {
 			setDisplayNameNBT(stack, displayName);
 			setModelNBT(stack, model);
 			setRarityNBT(stack, rarity);
+			setDurabilityNBT(stack, durability);
 			setEfficiencyNBT(stack, efficiency);
 		}
 	}
@@ -89,46 +103,57 @@ public class NBTItemPickaxe {
 	//Set NBT values
 	public static void setDisplayNameNBT(ItemStack stack, String value) {
 		if(stack.hasTagCompound()) {stack.getTagCompound().setString("displayName", value);} 
-		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultEfficiency);}
+		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultDurability, defaultEfficiency);}
 	}
 	
 	public static void setModelNBT(ItemStack stack, int value) {
 		if(stack.hasTagCompound()) {stack.getTagCompound().setInteger("model", value);} 
-		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultEfficiency);}
+		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultDurability, defaultEfficiency);}
 	}
 	
 	public static void setRarityNBT(ItemStack stack, int value) {
 		if(stack.hasTagCompound()) {stack.getTagCompound().setInteger("rarity", value);} 
-		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultEfficiency);}
+		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultDurability, defaultEfficiency);}
+	}
+	
+	public static void setDurabilityNBT(ItemStack stack, int value) {
+		if(stack.hasTagCompound()) {stack.getTagCompound().setInteger("durability", value);} 
+		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultDurability, defaultEfficiency);}
 	}
 	
 	public static void setEfficiencyNBT(ItemStack stack, int value) {
 		if(stack.hasTagCompound()) {stack.getTagCompound().setInteger("efficiency", value);} 
-		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultEfficiency);}
+		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultDurability, defaultEfficiency);}
 	}
 	
 	//Get NBT values
 	public static String getDisplayNameNBT(ItemStack stack) {
 		if(stack.hasTagCompound()) {return stack.getTagCompound().getString("displayName");} 
-		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultEfficiency);}
+		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultDurability, defaultEfficiency);}
 		return stack.getTagCompound().getString("displayName");
 	}
 	
 	public static int getModelNBT(ItemStack stack) {
 		if(stack.hasTagCompound()) {return stack.getTagCompound().getInteger("model");} 
-		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultEfficiency);}
+		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultDurability, defaultEfficiency);}
 		return stack.getTagCompound().getInteger("model");
 	}
 	
 	public static int getRarityNBT(ItemStack stack) {
 		if(stack.hasTagCompound()) {return stack.getTagCompound().getInteger("rarity");} 
-		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultEfficiency);}
+		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultDurability, defaultEfficiency);}
 		return stack.getTagCompound().getInteger("rarity");
+	}
+	
+	public static int getDurabilityNBT(ItemStack stack) {
+		if(stack.hasTagCompound()) {return stack.getTagCompound().getInteger("durability");} 
+		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultDurability, defaultEfficiency);}
+		return stack.getTagCompound().getInteger("durability");
 	}
 	
 	public static int getEfficiencyNBT(ItemStack stack) {
 		if(stack.hasTagCompound()) {return stack.getTagCompound().getInteger("efficiency");} 
-		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultEfficiency);}
+		else {setNBT(stack, defaultDisplayName, defaultModel, defaultRarity, defaultDurability, defaultEfficiency);}
 		return stack.getTagCompound().getInteger("efficiency");
 	}
 	

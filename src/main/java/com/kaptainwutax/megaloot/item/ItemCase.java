@@ -3,6 +3,7 @@ package com.kaptainwutax.megaloot.item;
 import com.kaptainwutax.megaloot.init.ItemInit;
 import com.kaptainwutax.megaloot.init.ModelInit;
 import com.kaptainwutax.megaloot.nbt.NBTItemPickaxe;
+import com.kaptainwutax.megaloot.nbt.NBTItemSword;
 import com.kaptainwutax.megaloot.utility.Reference;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -59,6 +60,17 @@ public class ItemCase extends Item {
 		//NBT Model
 		int randomModel = random.nextInt(ModelInit.numberOfPickaxeVariants);
 		
+		//NBT Durability
+		int randomDurability = nbt.defaultDurability;
+		switch(this.rarity) {
+			case 0 : randomDurability = random.nextInt(nbt.maxDurabilityCommon - nbt.minDurabilityCommon) + nbt.minDurabilityCommon;
+				break;
+			case 1 : randomDurability = random.nextInt(nbt.maxDurabilityRare - nbt.minDurabilityRare) + nbt.minDurabilityRare;
+				break;
+			case 2 : randomDurability = random.nextInt(nbt.maxDurabilityEpic - nbt.minDurabilityEpic) + nbt.minDurabilityEpic;
+				break;
+		}
+		
 		//NBT Efficiency
 		int randomEfficiency = nbt.defaultEfficiency;
 		switch(this.rarity) {
@@ -70,22 +82,44 @@ public class ItemCase extends Item {
 				break;
 		}
 		
-		NBTItemPickaxe.setNBT(stack, NBTItemPickaxe.defaultDisplayName, randomModel, this.rarity, randomEfficiency);
+		NBTItemPickaxe.setNBT(stack, NBTItemPickaxe.defaultDisplayName, randomModel, this.rarity, randomDurability, randomEfficiency);
     	
     	player.inventory.addItemStackToInventory(stack);    	
 	}
 	
 	private void generateSword(EntityPlayer player) {	
-		ItemStack stack = new ItemStack(ItemInit.SWORD);
+		ItemSword sword = ItemInit.SWORD;
+		NBTItemSword nbt = new NBTItemSword();
+		ItemStack stack = new ItemStack(sword);
+		Random random = new Random();
+				
+		//NBT Model
+		int randomModel = random.nextInt(ModelInit.numberOfSwordVariants);
 		
-    	if(!stack.hasTagCompound()) {
-    		NBTTagCompound nbt = new NBTTagCompound();
-    		stack.setTagCompound(nbt);
-    		Random random = new Random();
-    		int randomModel = random.nextInt(ModelInit.numberOfSwordVariants);
-        	nbt.setInteger("model", randomModel);
-        	nbt.setInteger("efficiency", 4);
-    	}
+		//NBT Durability
+		int randomDurability = nbt.defaultDurability;
+		switch(this.rarity) {
+			case 0 : randomDurability = random.nextInt(nbt.maxDurabilityCommon - nbt.minDurabilityCommon) + nbt.minDurabilityCommon;
+				break;
+			case 1 : randomDurability = random.nextInt(nbt.maxDurabilityRare - nbt.minDurabilityRare) + nbt.minDurabilityRare;
+				break;
+			case 2 : randomDurability = random.nextInt(nbt.maxDurabilityEpic - nbt.minDurabilityEpic) + nbt.minDurabilityEpic;
+				break;
+		}
+		
+		//NBT Damage 
+		int randomDamage = nbt.defaultDamage;
+		switch(this.rarity) {
+			case 0 : randomDamage = random.nextInt(nbt.maxDamageCommon - nbt.minDamageCommon) + nbt.minDamageCommon;
+				break;
+			case 1 : randomDamage = random.nextInt(nbt.maxDamageRare - nbt.minDamageRare) + nbt.minDamageRare;
+				break;
+			case 2 : randomDamage = random.nextInt(nbt.maxDamageEpic - nbt.minDamageEpic) + nbt.minDamageEpic;
+				break;
+		}
+		
+		System.out.println(randomDamage);
+		NBTItemSword.setNBT(stack, NBTItemSword.defaultDisplayName, randomModel, this.rarity, randomDurability, randomDamage);
     	
     	player.inventory.addItemStackToInventory(stack);    	
 	}

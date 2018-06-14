@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.google.common.collect.Multimap;
 import com.kaptainwutax.megaloot.helper.IMegaLoot;
 import com.kaptainwutax.megaloot.init.ItemInit;
 import com.kaptainwutax.megaloot.init.ModelInit;
@@ -13,7 +14,10 @@ import com.kaptainwutax.megaloot.utility.Reference;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.nbt.NBTTagCompound;
