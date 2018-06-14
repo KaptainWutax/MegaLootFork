@@ -28,7 +28,8 @@ public class HandlerRegistry {
 		
 	}
 	
-	public static void postInitRegistries(FMLPostInitializationEvent event) {		
+	public static void postInitRegistries(FMLPostInitializationEvent event) {
+		
 	}
 	
 	@SubscribeEvent

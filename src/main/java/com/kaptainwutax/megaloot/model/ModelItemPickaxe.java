@@ -1,6 +1,5 @@
 package com.kaptainwutax.megaloot.model;
 
-import com.kaptainwutax.megaloot.init.ItemInit;
 import com.kaptainwutax.megaloot.init.ModelInit;
 import com.kaptainwutax.megaloot.nbt.NBTItemPickaxe;
 
@@ -10,7 +9,6 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 
 public class ModelItemPickaxe implements ItemMeshDefinition {
 

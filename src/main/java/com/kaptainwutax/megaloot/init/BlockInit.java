@@ -10,10 +10,6 @@ public class BlockInit {
 		registry.registerAll();	        
 	}
 
-	public static void registerModels() {
-
-	}
-
 	public static void registerItemBlocks(IForgeRegistry<Item> registry) {	    	
 		registry.registerAll();	        
 	}

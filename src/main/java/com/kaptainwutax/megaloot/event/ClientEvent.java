@@ -11,17 +11,20 @@ public class ClientEvent {
 
 	@SubscribeEvent
 	public static void onTooltipDrawn(ItemTooltipEvent event) {
+		
 		if (event.getItemStack().getItem() instanceof IMegaLoot) {
-			
-			int deleteIndex = 10000;
+			int tooltipListStartSize = event.getToolTip().size();
 			
 			for(int i = 0 ; i < event.getToolTip().size() - 1 ; i++) {
-				if(event.getToolTip().get(i).contains("When in main hand:")) {event.getToolTip().remove(i);}
-				if(event.getToolTip().get(i).contains("Attack Damage")) {event.getToolTip().remove(i);}
-				if(event.getToolTip().get(i).contains("Attack Speed")) {event.getToolTip().remove(i);}
-			}
-				
-		}
+				if(event.getToolTip().get(i).contains("for more...")) {
+					int indexEndOfTooltip = i + 1;					
+					for(int ii = 0 ; ii < tooltipListStartSize - 1 ; ii++) {
+						if(!(event.getToolTip().size() - 1 < indexEndOfTooltip))
+							event.getToolTip().remove(indexEndOfTooltip);
+					}
+				}
+			}			
+		}	
 		
 	}
 	

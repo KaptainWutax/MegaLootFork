@@ -1,5 +1,3 @@
 package com.kaptainwutax.megaloot.helper;
 
-public interface IMegaLoot {
-
-}
+public interface IMegaLoot {}

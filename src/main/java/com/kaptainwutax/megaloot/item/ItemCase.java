@@ -9,12 +9,9 @@ import com.kaptainwutax.megaloot.utility.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import scala.util.Random;
 
@@ -118,7 +115,6 @@ public class ItemCase extends Item {
 				break;
 		}
 		
-		System.out.println(randomDamage);
 		NBTItemSword.setNBT(stack, NBTItemSword.defaultDisplayName, randomModel, this.rarity, randomDurability, randomDamage);
     	
     	player.inventory.addItemStackToInventory(stack);    	

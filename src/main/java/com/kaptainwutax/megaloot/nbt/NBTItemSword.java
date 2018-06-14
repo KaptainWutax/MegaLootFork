@@ -97,7 +97,7 @@ public class NBTItemSword {
 	public static int maxDurabilityEpic = 2500;
 	
 	//NBT Damage
-	public static int defaultDamage = (int)ToolMaterial.DIAMOND.getAttackDamage() * 2;
+	public static int defaultDamage = (int)ToolMaterial.DIAMOND.getAttackDamage() + 3;
 	
 	public static int minDamageCommon = 6;
 	public static int maxDamageCommon = 11;
@@ -111,7 +111,13 @@ public class NBTItemSword {
 
 	//Set NBT compound
 	public static void setNBT(ItemStack stack, String displayName, int model, int rarity, int durability, int damage) {
-		if(stack.hasTagCompound()) {return;} 
+		if(stack.hasTagCompound()) {
+			setDisplayNameNBT(stack, displayName);
+			setModelNBT(stack, model);
+			setRarityNBT(stack, rarity);
+			setDurabilityNBT(stack, durability);
+			setDamageNBT(stack, damage);
+		} 
 		else {
 			NBTTagCompound nbt = new NBTTagCompound();
 			stack.setTagCompound(nbt);
