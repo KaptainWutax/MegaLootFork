@@ -23,7 +23,7 @@ public class ModelInit {
 	};
 	public static int numberOfCaseVariants = itemCaseResourceLocation.length;
 	
-	public static void initialize() {
+	public static void initializeModels() {
 		for(int i = 0 ; i < numberOfPickaxeVariants ; i++) {
 			itemPickaxeResourceLocation[i] = new ModelResourceLocation(Reference.MOD_ID + ":" + "pickaxe/" + (i + 1), "inventory");
 		}
@@ -34,7 +34,7 @@ public class ModelInit {
 	}
 	
 	public static void registerItemModels() {
-		initialize();
+		initializeModels();
 		ModelLoader.setCustomMeshDefinition(ItemInit.PICKAXE, new ModelItemPickaxe(ItemInit.PICKAXE));
 		ModelLoader.setCustomMeshDefinition(ItemInit.SWORD, new ModelItemSword(ItemInit.SWORD));
 		registerCase(ItemInit.COMMON_CASE, 0, "inventory", 0);
