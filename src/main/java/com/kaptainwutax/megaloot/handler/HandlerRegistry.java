@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class HandlerRegistry {
 
 	public static void preInitRegistries(FMLPreInitializationEvent event) {
-		disableVanillaTooltips();
+
 	}
 	
 	public static void initRegistries(FMLInitializationEvent event) {
