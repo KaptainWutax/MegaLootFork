@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 
-public class ModelInit {
+public class InitModel {
 	
 	public static int numberOfPickaxeVariants = 16;
 	public static final ModelResourceLocation[] itemPickaxeResourceLocation = new ModelResourceLocation[numberOfPickaxeVariants];	
@@ -33,13 +33,13 @@ public class ModelInit {
 		}
 	}
 	
-	public static void registerItemModels() {
+	public static void registerModels() {
 		initializeModels();
-		ModelLoader.setCustomMeshDefinition(ItemInit.PICKAXE, new ModelItemPickaxe(ItemInit.PICKAXE));
-		ModelLoader.setCustomMeshDefinition(ItemInit.SWORD, new ModelItemSword(ItemInit.SWORD));
-		registerCase(ItemInit.COMMON_CASE, 0, "inventory", 0);
-		registerCase(ItemInit.RARE_CASE, 0, "inventory", 1);
-		registerCase(ItemInit.EPIC_CASE, 0, "inventory", 2);
+		ModelLoader.setCustomMeshDefinition(InitItem.PICKAXE, new ModelItemPickaxe(InitItem.PICKAXE));
+		ModelLoader.setCustomMeshDefinition(InitItem.SWORD, new ModelItemSword(InitItem.SWORD));
+		registerCase(InitItem.COMMON_CASE, 0, "inventory", 0);
+		registerCase(InitItem.RARE_CASE, 0, "inventory", 1);
+		registerCase(InitItem.EPIC_CASE, 0, "inventory", 2);
 	}
 	
 	private static void registerCase(Item item, int meta, String type, int rarity) {

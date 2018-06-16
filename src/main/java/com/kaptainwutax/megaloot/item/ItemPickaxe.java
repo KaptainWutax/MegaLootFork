@@ -14,6 +14,7 @@ import com.kaptainwutax.megaloot.utility.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -70,10 +71,14 @@ public class ItemPickaxe extends net.minecraft.item.ItemPickaxe implements IMega
     //Generate tooltips
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flagIn) {
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flagIn) {		
+		if(GuiScreen.isShiftKeyDown()) {
+
+		} else {
 			tooltip.add(TextFormatting.RESET + "" + "Pickaxe");		
 			tooltip.add(TextFormatting.GRAY + "" + ItemStack.DECIMALFORMAT.format(NBTItemPickaxe.getEfficiencyNBT(stack)) + " Mining Speed");		
 			tooltip.add(TextFormatting.AQUA + "" + TextFormatting.ITALIC + "Shift" + TextFormatting.DARK_GRAY + " for more...");
+		}
 	}
 	
 	@Override

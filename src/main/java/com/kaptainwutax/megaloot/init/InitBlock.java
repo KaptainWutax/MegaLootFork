@@ -4,9 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class BlockInit {
+public class InitBlock {
 	
-	public static void register(IForgeRegistry<Block> registry) {	    	
+	public static void registerBlocks(IForgeRegistry<Block> registry) {	    	
 		registry.registerAll();	        
 	}
 

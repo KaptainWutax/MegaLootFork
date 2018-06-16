@@ -1,11 +1,13 @@
 package com.kaptainwutax.megaloot.handler;
 
-import com.kaptainwutax.megaloot.init.BlockInit;
-import com.kaptainwutax.megaloot.init.ItemInit;
-import com.kaptainwutax.megaloot.init.ModelInit;
+import com.kaptainwutax.megaloot.init.InitBlock;
+import com.kaptainwutax.megaloot.init.InitItem;
+import com.kaptainwutax.megaloot.init.InitKeyBinding;
+import com.kaptainwutax.megaloot.init.InitModel;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -25,7 +27,7 @@ public class HandlerRegistry {
 	}
 	
 	public static void initRegistries(FMLInitializationEvent event) {
-		
+		onKeyBindingRegister();
 	}
 	
 	public static void postInitRegistries(FMLPostInitializationEvent event) {
@@ -34,18 +36,22 @@ public class HandlerRegistry {
 	
 	@SubscribeEvent
 	public static void onItemRegister(RegistryEvent.Register<Item> event) {	    	
-		ItemInit.register(event.getRegistry());
-		BlockInit.registerItemBlocks(event.getRegistry());	        
+		InitItem.registerItems(event.getRegistry());
+		InitBlock.registerItemBlocks(event.getRegistry());	        
 	}
 
 	@SubscribeEvent
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {	    	
-		BlockInit.register(event.getRegistry());	        
+		InitBlock.registerBlocks(event.getRegistry());	        
 	}
 
 	@SubscribeEvent
 	public static void onModelRegister(ModelRegistryEvent event) {	    	
-		ModelInit.registerItemModels();
+		InitModel.registerModels();
+	}
+	
+	public static void onKeyBindingRegister() {	    	
+		InitKeyBinding.registerKeyBindings();	        
 	}
 	
 }

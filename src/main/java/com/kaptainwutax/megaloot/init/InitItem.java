@@ -10,7 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class ItemInit {
+public class InitItem {
 	
 	public static ArrayList<Item> TOOLS = new ArrayList<Item>();
 	
@@ -21,7 +21,7 @@ public class ItemInit {
 	public static ItemCase RARE_CASE = new ItemCase("rare_case", 1);
 	public static ItemCase EPIC_CASE = new ItemCase("epic_case", 2);
 	
-	public static void register(IForgeRegistry<Item> registry) {   	
+	public static void registerItems(IForgeRegistry<Item> registry) {   	
 		registry.registerAll(PICKAXE, SWORD, COMMON_CASE, RARE_CASE, EPIC_CASE);
 		TOOLS.add(PICKAXE); TOOLS.add(SWORD);
 	}

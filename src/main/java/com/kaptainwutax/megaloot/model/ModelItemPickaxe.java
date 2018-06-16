@@ -1,6 +1,6 @@
 package com.kaptainwutax.megaloot.model;
 
-import com.kaptainwutax.megaloot.init.ModelInit;
+import com.kaptainwutax.megaloot.init.InitModel;
 import com.kaptainwutax.megaloot.nbt.NBTItemPickaxe;
 
 import net.minecraft.client.renderer.ItemMeshDefinition;
@@ -14,7 +14,7 @@ public class ModelItemPickaxe implements ItemMeshDefinition {
 
 	public ModelItemPickaxe(Item item) {
 		if(item instanceof ItemPickaxe) {
-			ModelBakery.registerItemVariants(item, ModelInit.itemPickaxeResourceLocation);
+			ModelBakery.registerItemVariants(item, InitModel.itemPickaxeResourceLocation);
 		}
 	}
 	
@@ -23,7 +23,7 @@ public class ModelItemPickaxe implements ItemMeshDefinition {
 		Item item = stack.getItem();
 		if(item instanceof ItemPickaxe) {			
 			int model = getPickaxeModel(stack);				
-			return new ModelResourceLocation(ModelInit.itemPickaxeResourceLocation[model].getResourceDomain() + ":" + ModelInit.itemPickaxeResourceLocation[model].getResourcePath(), "inventory");
+			return new ModelResourceLocation(InitModel.itemPickaxeResourceLocation[model].getResourceDomain() + ":" + InitModel.itemPickaxeResourceLocation[model].getResourcePath(), "inventory");
 		}		
 		return null;	
 	}

@@ -1,7 +1,7 @@
 package com.kaptainwutax.megaloot.item;
 
-import com.kaptainwutax.megaloot.init.ItemInit;
-import com.kaptainwutax.megaloot.init.ModelInit;
+import com.kaptainwutax.megaloot.init.InitItem;
+import com.kaptainwutax.megaloot.init.InitModel;
 import com.kaptainwutax.megaloot.nbt.NBTItemPickaxe;
 import com.kaptainwutax.megaloot.nbt.NBTItemSword;
 import com.kaptainwutax.megaloot.utility.Reference;
@@ -39,23 +39,23 @@ public class ItemCase extends Item {
     
     private int generateCaseTool() {
 		Random random = new Random();
-		int randomTool = random.nextInt(ItemInit.TOOLS.size());
+		int randomTool = random.nextInt(InitItem.TOOLS.size());
 		return randomTool;
     }
 	
 	private void generateCaseLoot(EntityPlayer player, int randomTool) {		
-		if(ItemInit.TOOLS.get(randomTool) instanceof ItemPickaxe) {generatePickaxe(player);}
-		if(ItemInit.TOOLS.get(randomTool) instanceof ItemSword) {generateSword(player);}
+		if(InitItem.TOOLS.get(randomTool) instanceof ItemPickaxe) {generatePickaxe(player);}
+		if(InitItem.TOOLS.get(randomTool) instanceof ItemSword) {generateSword(player);}
 	}
 	
 	private void generatePickaxe(EntityPlayer player) {	
-		ItemPickaxe pickaxe = ItemInit.PICKAXE;
+		ItemPickaxe pickaxe = InitItem.PICKAXE;
 		NBTItemPickaxe nbt = new NBTItemPickaxe();
 		ItemStack stack = new ItemStack(pickaxe);
 		Random random = new Random();
 				
 		//NBT Model
-		int randomModel = random.nextInt(ModelInit.numberOfPickaxeVariants);
+		int randomModel = random.nextInt(InitModel.numberOfPickaxeVariants);
 		
 		//NBT Durability
 		int randomDurability = nbt.defaultDurability;
@@ -85,13 +85,13 @@ public class ItemCase extends Item {
 	}
 	
 	private void generateSword(EntityPlayer player) {	
-		ItemSword sword = ItemInit.SWORD;
+		ItemSword sword = InitItem.SWORD;
 		NBTItemSword nbt = new NBTItemSword();
 		ItemStack stack = new ItemStack(sword);
 		Random random = new Random();
 				
 		//NBT Model
-		int randomModel = random.nextInt(ModelInit.numberOfSwordVariants);
+		int randomModel = random.nextInt(InitModel.numberOfSwordVariants);
 		
 		//NBT Durability
 		int randomDurability = nbt.defaultDurability;

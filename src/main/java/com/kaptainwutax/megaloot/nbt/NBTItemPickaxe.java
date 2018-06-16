@@ -87,7 +87,12 @@ public class NBTItemPickaxe {
 
 	//Set NBT compound
 	public static void setNBT(ItemStack stack, String displayName, int model, int rarity, int durability, int efficiency) {
-		if(stack.hasTagCompound()) {return;} 
+		if(stack.hasTagCompound()) {			
+			setDisplayNameNBT(stack, displayName);
+			setModelNBT(stack, model);
+			setRarityNBT(stack, rarity);
+			setDurabilityNBT(stack, durability);
+			setEfficiencyNBT(stack, efficiency);} 
 		else {
 			NBTTagCompound nbt = new NBTTagCompound();
 			stack.setTagCompound(nbt);

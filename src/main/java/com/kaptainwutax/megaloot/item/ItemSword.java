@@ -10,6 +10,7 @@ import com.kaptainwutax.megaloot.nbt.NBTItemSword;
 import com.kaptainwutax.megaloot.nbt.NBTLoot;
 import com.kaptainwutax.megaloot.utility.Reference;
 
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -53,11 +54,16 @@ public class ItemSword extends net.minecraft.item.ItemSword implements IMegaLoot
     //Generate tooltips
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(TextFormatting.RESET + "" + "Sword");		
-		tooltip.add(TextFormatting.GRAY + "" + NBTItemSword.getDamageNBT(stack) + " Damage");		
-		tooltip.add(TextFormatting.AQUA + "" + TextFormatting.ITALIC + "Shift" + TextFormatting.DARK_GRAY + " for more...");
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flagIn) {	
+		if(GuiScreen.isShiftKeyDown()) {
+
+		} else {
+			tooltip.add(TextFormatting.RESET + "" + "Sword");		
+			tooltip.add(TextFormatting.GRAY + "" + NBTItemSword.getDamageNBT(stack) + " Damage");		
+			tooltip.add(TextFormatting.AQUA + "" + TextFormatting.ITALIC + "Shift" + TextFormatting.DARK_GRAY + " for more...");
+		}	
 	}
+
 	
 	@Override
 	public String getItemStackDisplayName(ItemStack stack) {
